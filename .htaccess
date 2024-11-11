@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteRule ^imagen_ofuscada/(.*)$ admin/blog/$1 [L]
+
+
+#HTACCESS - Restringiendo acceso a los archivos de carpetas
+Options All -Indexes
+
+
+# Verifica que la solicitud no corresponda a un archivo existente
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Reescribe la URL agregando ".php" al final
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
